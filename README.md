@@ -1,25 +1,34 @@
+# Project Name
 
-# README
+This project can be easily set up using Docker.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Required Software
 
-Things you may want to cover:
+- Docker
+- Docker Compose
 
-* Ruby version
+## Setup Instructions
 
-* System dependencies
+### 1. Build the Docker Containers
+In the project directory, run the following command to build the Docker containers:
 
-* Configuration
+```
+docker-compose build
 
-* Database creation
+```
 
-* Database initialization
+### 2. Start the Containers
+Once the build is complete, run the following command to start the containers in the background:
 
-* How to run the test suite
+```
+docker-compose up
 
-* Services (job queues, cache servers, search engines, etc.)
+```
 
-* Deployment instructions
+### 3. Verify the Application
+After the containers start successfully, you can verify that the application is running by visiting the following URL in your browser:
 
+```
+http://localhost:3000
 
+```
