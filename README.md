@@ -28,6 +28,7 @@ docker-compose up
 ### 3. Verify the Application
 After the containers start successfully, you can verify that the application is running by visiting the following URL in your browser:
 
+
 ```
 http://localhost:3000
 
