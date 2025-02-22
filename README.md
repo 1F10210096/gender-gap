@@ -33,5 +33,3 @@ After the containers start successfully, you can verify that the application is 
 http://localhost:3000
 
 ```
-
-a
