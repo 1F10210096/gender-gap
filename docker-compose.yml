@@ -9,17 +9,26 @@ services:
       POSTGRES_PASSWORD: mypassword
       POSTGRES_DB: mydatabase
 
-  web:
-    build: .
-    command: bash -c "rm -f tmp/pids/server.pid && rails s -b 0.0.0.0"
-    volumes:
-      - .:/app
+  app:
+    build: 
+      context: .
+      dockerfile: "Dockerfile.dev"
+    stdin_open: true
+    tty: true
+    command: /bin/sh -c "bundle install && yarn install && rm -f tmp/pids/server.pid && bin/dev"
+
     ports:
       - "3000:3000"
     depends_on:
       - db
     environment:
       DATABASE_URL: postgres://myuser:mypassword@db/mydatabase
+    volumes:
+      - .:/app:delegated
+      - node-modules:/app/node_modules:delegated
+      - bundle-data:/usr/local/bundle:delegate
 
 volumes:
   postgres_data:
+  bundle-data:
+  node-modules:

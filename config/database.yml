@@ -6,6 +6,8 @@ default: &default
   password: mypassword
   database: mydatabase
   pool: 5
-
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+  host: <%= ENV['DB_HOST'] %>
 development:
   <<: *default

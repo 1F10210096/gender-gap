@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :tasks
+  root to: 'top#index'  # 'front#index' を 'top#index' に変更
+  get '*path', to: 'top#index'  # フォールバックも 'top#index
   get 'routes/info'
   get 'posts/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -9,5 +11,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-   root "users#show"
+  #  root "users#show"
 end
