@@ -23,5 +23,6 @@ module HorseRacing
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.hosts << "horse-racing-elb-2110834570.ap-northeast-1.elb.amazonaws.com"
   end
 end
