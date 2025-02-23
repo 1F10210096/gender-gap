@@ -1,10 +1,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
-  username: myuser
-  password: mypassword
-  database: mydatabase
+  host: horse-racing-db-02.cx0oukwwi4qa.ap-northeast-1.rds.amazonaws.com
+  username: admin_user
+  password: Koki245836!
+  database: postgres
   pool: 5
 
 development:
