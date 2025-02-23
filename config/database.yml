@@ -1,13 +1,15 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
-  username: myuser
-  password: mypassword
-  database: mydatabase
-  pool: 5
+  host: <%= ENV['DB_HOST'] %>
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASS'] %>
-  host: <%= ENV['DB_HOST'] %>
+  database: horse-racing-app
+  pool: 5
+
 development:
   <<: *default
+
+production:
+  <<: *default
+  database: horse-racing-app
