@@ -18,4 +18,5 @@ Rails.application.configure do
   config.i18n.fallbacks = true
   config.active_support.report_deprecations = false
   config.active_record.dump_schema_after_migration = false
+  config.hosts << "horse-racing-elb-2110834570.ap-northeast-1.elb.amazonaws.com"
 end
