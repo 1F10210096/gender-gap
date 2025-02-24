@@ -8,7 +8,15 @@ default: &default
   pool: 5
 
 development:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: horse_racing_dev_user
+  password: your_password
+  database: horse_racing_dev
+  pool: 5
+
+
 
 production:
   <<: *default
