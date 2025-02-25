@@ -1,20 +1,14 @@
 default: &default
-  adapter: postgresql
-  encoding: unicode
-  host: horse-racing-db-02.cx0oukwwi4qa.ap-northeast-1.rds.amazonaws.com
-  username: horse-racing-app
-  password: Koki245836!
-  database: horse-racing-app
-  pool: 5
+adapter: postgresql
+encoding: unicode
+host: localhost
+username: horse_racing_dev_user
+password: your_password
+database: horse_racing_dev
+pool: 5
 
 development:
-  adapter: postgresql
-  encoding: unicode
-  host: localhost
-  username: horse_racing_dev_user
-  password: your_password
-  database: horse_racing_dev
-  pool: 5
+  <<: *default
 
 
 
