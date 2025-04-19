@@ -26,11 +26,17 @@ class DiscussionThread < ApplicationRecord
 
   # 人気のスレッドを取得（直近1日のコメント数が多い順）
   def self.fetch_popular
-    Rails.cache.fetch("popular_threads",expire_in: 10.minutes) do
-      threads = DiscussionThreadQuery.new.popular
-      Rails.logger.info("Fetched popular threads: #{threads.inspect}")
+    cached = Rails.cache.read("popular_threads")
+
+    # バックグラウンドで最新を更新
+    RefreshPopularThreadsJob.perform_later
   
-      threads.map do |thread|
+    if cached.present?
+      return cached
+    else
+      # キャッシュがなければ同期的に取得（初回用）
+      threads = DiscussionThreadQuery.new.popular
+      result = threads.map do |thread|
         {
           id: thread.id,
           thread_title: thread.thread_title,
@@ -44,16 +50,22 @@ class DiscussionThread < ApplicationRecord
           }
         }
       end
+      Rails.cache.write("popular_threads", result, expires_in: 10.minutes)
+      return result
     end
   end
 
   # 人気のスレッドを取得（直近1週間のコメント数が多い順）
   def self.fetch_week_popular
-    Rails.cache.fetch("week_popular_threads",expire_in: 24.hours) do
+    cached = Rails.cache.read("week_popular_threads")
+    RefreshWeekPopularThreadsJob.perform_later
+
+    if cached.present? 
+      return cached
+    else
       threads = DiscussionThreadQuery.new.weekPopular # 直近1週間の人気スレッドを取得
       Rails.logger.info("Fetched weekly popular threads: #{threads.inspect}")
-
-      threads.map do |thread|
+      result = threads.map do |thread|
         {
           id: thread.id,
           thread_title: thread.thread_title,
@@ -67,6 +79,8 @@ class DiscussionThread < ApplicationRecord
           }
         }
       end
+      Rails.cache.write("week_popular_threads", result, expires_in: 180.minutes)
+      return result
     end
   end
 
