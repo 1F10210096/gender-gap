@@ -7,7 +7,6 @@ import ThreadAndPostImage from "../../Home/contents/threadAndPostImage/ThreadAnd
 import { useRef } from "react";
 const ThreadDetail = () => {
   const { threadInfo, threadTitle, dateInfo, threadImage } = useGetThreadInfo();
-
   const formRef = useRef<HTMLDivElement>(null);
 
   const scrollToForm = () => {

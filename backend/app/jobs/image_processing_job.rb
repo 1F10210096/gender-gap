@@ -1,7 +1,7 @@
 class ImageProcessingJob < ApplicationJob
   queue_as :default
   require 'aws-sdk-s3'
-  def perform(*args)
+  def perform(key)
     return if key.blank?
 
     s3 = Aws::S3::Resource.new(

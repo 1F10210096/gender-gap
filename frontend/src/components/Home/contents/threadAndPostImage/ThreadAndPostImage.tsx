@@ -25,23 +25,28 @@ const ThreadAndPostImage = ({ imageKey }: Props) => {
         const res = await fetch(
           `${presinged_api_url}?key=${encodeURIComponent(imageKey)}`
         );
-
+        console.log("image_key_res", res);
         if (!res.ok) {
           throw new Error(`HTTPエラー: ${res.status}`);
         }
 
         const json = await res.json();
-        const url = json.data.url;
-        setImageUrl(url);
-
-        setCachedImageUrl(imageKey, url);
-        setError(null);
+        // console.log("url", url);
+        if (json.data?.url) {
+          setImageUrl(json.data.url);
+          setCachedImageUrl(imageKey, json.data.url);
+          setError(null);
+        } else if (json.data?.status === "pending") {
+          console.log("URLまだ準備できてない。3秒後に再試行するよ。");
+          setTimeout(fetchImageUrl, 3000); // 再試行
+        } else {
+          setError("画像URLの取得に失敗しました");
+        }
       } catch (err) {
         console.error("❌ presigned URL取得失敗:", err);
         setError("画像が見つかりませんでした");
       }
     };
-
     fetchImageUrl();
   }, [imageKey, presinged_api_url]);
   return (

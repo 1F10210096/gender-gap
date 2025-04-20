@@ -32,8 +32,12 @@ const useGetThreadInfo = (): useGetThreadInfoReturn => {
       threadInfo: {
         id: id ?? "",
         thread_title: "読み込み中...",
-        created_at: 0,
+        created_at: "",
         image_key: undefined,
+        votes_summary: {
+          male_votes: 0,
+          female_votes: 0,
+        },
       },
       threadTitle: "読み込み中...",
       dateInfo: new Date(),
@@ -60,6 +64,7 @@ export const useGetThreadState = (thread: Thread): useGetThreadStateReturn => {
   // const { id } = useParams<{ id: string }>();
   const threadTitle = thread.thread_title;
   const threadImage = thread.image_key;
+  console.log(threadImage);
   const threadCreatedAt = thread.created_at;
   const dateInfo = new Date(threadCreatedAt);
   return { threadTitle, dateInfo, threadImage };

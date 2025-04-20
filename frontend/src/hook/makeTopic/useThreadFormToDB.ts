@@ -25,10 +25,12 @@ const useThreadFormToDB = (): useThreadFormToDBReturn => {
     thread_title: string;
     id: string;
     created_at: number;
+    image_key?: string;
   }>({
     thread_title: "",
     id: "",
     created_at: 0,
+    image_key: "",
   });
   const navigate = useNavigate();
 
@@ -45,7 +47,7 @@ const useThreadFormToDB = (): useThreadFormToDBReturn => {
     const thread_title = threadTitle;
     const content = threadContext;
     const created_at = threadInfo.created_at;
-    console.log("スレッド送信時のthreadTitle", threadTitle);
+
     const payload = {
       discussion_thread: { thread_title, created_at, image_key },
       post: { content: content, gender: gender, image_key: image_key || null },
@@ -69,7 +71,6 @@ const useThreadFormToDB = (): useThreadFormToDBReturn => {
   };
   useEffect(() => {
     if (threadInfo.id) {
-      console.log("ページ遷移前のthread_title", threadInfo);
       navigate(`/threads/${threadInfo.id}`, {
         state: {
           thread_title: threadInfo.thread_title,
