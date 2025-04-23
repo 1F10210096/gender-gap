@@ -30,7 +30,7 @@ module Api
             def create
                 content = Post.build_new(content_params,@current_user.id)
                 if content.save 
-                    Rails.cache.delete("thread:#{post.discussion_thread_id}:posts_json")
+                    Rails.cache.delete("thread:#{content.discussion_thread_id}:posts_json")
                     render_json_response({content:content}, status: :created)
                 else
                     render_json_response({ errors: content.errors.full_messages }, status: :unprocessable_entity)
