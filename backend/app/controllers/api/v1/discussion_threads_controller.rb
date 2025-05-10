@@ -10,7 +10,7 @@ module Api
 
       def create
         thread = DiscussionThread.create_with_post(thread_params, post_params,@current_user.id)
-      
+
         if thread.persisted?
           render_json_response({ id: thread.id, thread_title: thread.thread_title,created_at:thread.created_at,image_key:thread.image_key }, status: :created)
         else
@@ -23,7 +23,6 @@ module Api
       def thread_params
         params.require(:discussion_thread).permit(:thread_title,:created_at, :image_key)
       end
-
       def post_params
         params.require(:post).permit(:content, :gender, :image_key)
       end
