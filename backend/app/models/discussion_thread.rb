@@ -24,72 +24,35 @@ class DiscussionThread < ApplicationRecord
     DiscussionThreadQuery.new.recent
   end
 
-  # 人気のスレッドを取得（直近1日のコメント数が多い順）
-  def self.fetch_popular
-    Rails.cache.fetch("popular_threads",expire_in: 10.minutes) do
-      threads = DiscussionThreadQuery.new.popular
-      Rails.logger.info("Fetched popular threads: #{threads.inspect}")
-  
-      threads.map do |thread|
-        {
-          id: thread.id,
-          thread_title: thread.thread_title,
-          created_at: thread.created_at,
-          updated_at: thread.updated_at,
-          image_key: thread.try(:image_key),
-          comments_count: thread.attributes["comments_count"].to_i,
-          votes_summary: {
-            male_votes: thread.attributes["male_votes"].to_i,
-            female_votes: thread.attributes["female_votes"].to_i
-          }
-        }
-      end
-    end
-  end
-
   # 人気のスレッドを取得（直近1週間のコメント数が多い順）
   def self.fetch_week_popular
-    Rails.cache.fetch("week_popular_threads",expire_in: 24.hours) do
-      threads = DiscussionThreadQuery.new.weekPopular # 直近1週間の人気スレッドを取得
-      Rails.logger.info("Fetched weekly popular threads: #{threads.inspect}")
+    threads = DiscussionThreadQuery.new.weekPopular # 直近1週間の人気スレッドを取得
+    threads.map do |thread|
+      male_votes = 0
+      female_votes = 0
 
-      threads.map do |thread|
-        {
-          id: thread.id,
-          thread_title: thread.thread_title,
-          created_at: thread.created_at,
-          updated_at: thread.updated_at,
-          image_key: thread.try(:image_key),
-          comments_count: thread.attributes["comments_count"].to_i,
-          votes_summary: {
-            male_votes: thread.attributes["male_votes"].to_i,
-            female_votes: thread.attributes["female_votes"].to_i
-          }
-        }
+      # 各スレッドに関連するポストと「いいね」を集計
+      posts = thread.posts.includes(:votes) # 関連するポストと「いいね」を取得
+      posts.each do |post|
+        if post.gender == 1 # 男性のポスト
+          male_votes += post.votes.where(gender: 1).count
+        elsif post.gender == 2 # 女性のポスト
+          female_votes += post.votes.where(gender: 2).count
+        end
       end
-    end
-  end
 
-  # 人気のスレッドを取得（直近1時間のコメント数が多い順）
-  def self.fetch_onehour_popular
-    Rails.cache.fetch("onehour_popular_threads",expire_in: 1.hour) do
-      threads = DiscussionThreadQuery.new.onehourPopular # 直近1時間の人気スレッドを取得
-      Rails.logger.info("Fetched one hour popular threads: #{threads.inspect}")
-
-      threads.map do |thread|
-        {
-          id: thread.id,
-          thread_title: thread.thread_title,
-          created_at: thread.created_at,
-          updated_at: thread.updated_at,
-          image_key: thread.try(:image_key),
-          comments_count: thread.attributes["comments_count"].to_i,
-          votes_summary: {
-            male_votes: thread.attributes["male_votes"].to_i,
-            female_votes: thread.attributes["female_votes"].to_i
+      # スレッド情報と集計結果を返す
+      {
+        id: thread.id,
+        thread_title: thread.thread_title,
+        created_at: thread.created_at,
+        updated_at: thread.updated_at,
+        comments_count: thread.posts.count,
+        votes_summary: {
+          male_votes: male_votes,
+          female_votes: female_votes
         }
-        }
-      end
+      }
     end
   end
 
