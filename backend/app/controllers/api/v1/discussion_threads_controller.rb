@@ -23,6 +23,7 @@ module Api
       def thread_params
         params.require(:discussion_thread).permit(:thread_title,:created_at, :image_key)
       end
+
       def post_params
         params.require(:post).permit(:content, :gender, :image_key)
       end
