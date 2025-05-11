@@ -48,6 +48,39 @@
           null
         ]
       },
+      "/rails/app/models/discussion_thread_weekly_popular.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
       "/rails/app/models/post_with_vote_summary.rb": {
         "lines": [
           1,
@@ -253,29 +286,6 @@
           null,
           1,
           0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null,
           null,
           null,
@@ -606,7 +616,6 @@
       },
       "/rails/app/controllers/api/v1/discussion_threads_week_populartopic_controller.rb": {
         "lines": [
-          0,
           0,
           0,
           0,
@@ -1286,6 +1295,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1746931492
+    "timestamp": 1746933678
   }
 }
