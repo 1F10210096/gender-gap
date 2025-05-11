@@ -1,7 +1,5 @@
 module Voters
-  attr_reader :pos
-  
-  class NullVoter
+  class NullVoteCounter
     def initialize(post); end
 
     def vote_count
