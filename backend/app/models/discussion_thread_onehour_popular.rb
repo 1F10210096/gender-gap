@@ -1,4 +1,4 @@
-class DiscussionThreadRecentPopular
+class DiscussionThreadOnehourPopular
   attr_reader :query, :summarizer
 
   def initialize(query:,summarizer:)
@@ -11,18 +11,18 @@ class DiscussionThreadRecentPopular
   end
 
   def call
-    popular_recent_threads_cache
+    popular_onehour_threads_cache
   end
 
   private
 
-  def popular_recent_threads_cache
+  def popular_onehour_threads_cache
     Rails.cache.fetch("popular_threads", expire_in: Rails.application.config.cache_expiry[:recent_popular_threads]) do
-      thread_recent_popular_with_votes
+      thread_onehour_popular_with_votes
     end
   end
 
-  def thread_recent_popular_with_votes
+  def thread_onehour_popular_with_votes
     query.onehourPopular.map do |thread|
       summarizer.call(thread: thread)
     end
