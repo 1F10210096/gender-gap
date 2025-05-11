@@ -19,11 +19,6 @@ class DiscussionThread < ApplicationRecord
     return DiscussionThread.new
   end
 
-  # 最近のスレッドを取得
-  def self.fetch_recent
-    DiscussionThreadQuery.new.recent
-  end
-
   # ID からスレッドを取得（例外処理は Controller 側で行う）
   def self.find_by_id(id)
     find(id)
