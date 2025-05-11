@@ -1,15 +1,16 @@
-class DiscussionThreadQuery
+module DiscussionThreadsQuery
+  class OnehourPopular
     attr_reader :limit
-  
+
     def initialize(limit = 10)
       @limit = limit
     end
-  
-    def popular
+
+    def onehourPopular
       DiscussionThread
       .joins(:posts)
       .left_outer_joins(posts: :votes)
-      .where('posts.created_at >= ?', 1.day.ago)
+      .where('posts.created_at >= ?', 1.hour.ago)
       .group('discussion_threads.id')
       .select(
         'discussion_threads.id',
@@ -24,6 +25,5 @@ class DiscussionThreadQuery
       .order('comments_count DESC')
       .limit(@limit)
     end
+  end
 end
-
-   

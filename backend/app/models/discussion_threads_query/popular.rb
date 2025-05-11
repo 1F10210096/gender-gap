@@ -1,10 +1,11 @@
-class DiscussionThreadQuery
+module DiscussionThreadsQuery
+  class Popular
     attr_reader :limit
-  
+
     def initialize(limit = 10)
       @limit = limit
     end
-  
+
     def popular
       DiscussionThread
       .joins(:posts)
@@ -24,6 +25,5 @@ class DiscussionThreadQuery
       .order('comments_count DESC')
       .limit(@limit)
     end
+  end
 end
-
-   
