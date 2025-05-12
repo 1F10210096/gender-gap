@@ -1,14 +1,19 @@
 module DiscussionThreads
   class Popular
-    attr_reader :query, :summarizer
+    attr_reader :query, :summarizer, :gender
 
-    def initialize(query:,summarizer:)
+    def initialize(query:, summarizer:, gender:)
       @query = query
       @summarizer = summarizer
+      @gender = gender
     end
 
-    def self.call(query: ::DiscussionThreadsQuery::Popular.new, summarizer: PostWithVoteSummary)
-        new(query: query, summarizer: summarizer).call
+    def self.call(
+      query: ::DiscussionThreadsQuery::Popular.new,
+      summarizer: PostWithVoteSummary,
+      gender: Gender
+    )
+      new(query: query, summarizer: summarizer, gender: gender).call
     end
 
     def call
@@ -24,8 +29,9 @@ module DiscussionThreads
     end
 
     def thread_popular_with_votes
+      Rails.logger.info("Popular threads query result: #{query.popular.inspect}")
       query.popular.map do |thread|
-        summarizer.call(thread: thread)
+        summarizer.call(thread: thread, gender: gender)
       end
     end
   end

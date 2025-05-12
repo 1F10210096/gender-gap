@@ -24,12 +24,4 @@ class Post < ApplicationRecord
   def self.reported
     PostsQuery.new.reported
   end
-
-  def voter
-    case gender
-    when 1 then Voters::MaleVoter.new(self)
-    when 2 then Voters::FemaleVoter.new(self)
-    else Voters::NullVoter.new(self)
-    end
-  end
 end

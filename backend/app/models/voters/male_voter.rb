@@ -1,13 +1,13 @@
 module Voters
   class MaleVoter
-    attr_reader :post
+    attr_reader :vote
 
-    def initialize(post)
-      @post = post
+    def initialize(vote)
+      @vote = vote
     end
 
     def vote_count
-      post.votes.where(gender: 1).count
+      1
     end
 
     def category
