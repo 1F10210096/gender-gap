@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe DiscussionThreadRecent, type: :model do
+RSpec.describe DiscussionThreads::Recommended, type: :model do
   let(:thread1) { create(:discussion_thread) }
   let(:thread2) { create(:discussion_thread) }
 
   let(:query) do
-    double('DiscussionThreadQuery', recent: [thread1, thread2])
+    double('DiscussionThreadQuery', recommended: [thread1, thread2])
   end
 
   let(:summarizer) do
@@ -21,7 +21,7 @@ RSpec.describe DiscussionThreadRecent, type: :model do
   end
 
   describe '.call' do
-    it 'recentスレッドのsummaryを返す' do
+    it 'recommendedスレッドのsummaryを返す' do
       result = described_class.call(query: query, summarizer: summarizer)
 
       expect(result).to be_an(Array)

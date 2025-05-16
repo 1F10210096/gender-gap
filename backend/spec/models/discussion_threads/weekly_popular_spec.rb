@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe DiscussionThreadPopular, type: :model do
+RSpec.describe DiscussionThreads::WeeklyPopular, type: :model do
   let(:thread1) { create(:discussion_thread) }
   let(:thread2) { create(:discussion_thread) }
 
   let(:query) do
-    double('DiscussionThreadQuery', popular: [thread1, thread2])
+    double('DiscussionThreadQuery', weekPopular: [thread1, thread2])
   end
 
   let(:summarizer) do
@@ -21,7 +21,7 @@ RSpec.describe DiscussionThreadPopular, type: :model do
   end
 
   describe '.call' do
-    it 'popularスレッドのsummaryを返す' do
+    it 'weeklypopularスレッドのsummaryを返す' do
       result = described_class.call(query: query, summarizer: summarizer)
 
       expect(result).to be_an(Array)

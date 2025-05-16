@@ -15,8 +15,9 @@
           null
         ]
       },
-      "/rails/app/models/discussion_thread_onehour_popular.rb": {
+      "/rails/app/models/discussion_threads/onehour_popular.rb": {
         "lines": [
+          1,
           1,
           1,
           null,
@@ -44,12 +45,14 @@
           1,
           1,
           2,
+          null,
           null,
           null
         ]
       },
-      "/rails/app/models/discussion_thread_popular.rb": {
+      "/rails/app/models/discussion_threads/popular.rb": {
         "lines": [
+          1,
           1,
           1,
           null,
@@ -77,12 +80,14 @@
           1,
           1,
           2,
+          null,
           null,
           null
         ]
       },
-      "/rails/app/models/discussion_thread_recent.rb": {
+      "/rails/app/models/discussion_threads/recent_topic.rb": {
         "lines": [
+          1,
           1,
           1,
           null,
@@ -110,12 +115,50 @@
           1,
           1,
           2,
+          null,
           null,
           null
         ]
       },
-      "/rails/app/models/discussion_thread_weekly_popular.rb": {
+      "/rails/app/models/discussion_threads/recommended.rb": {
         "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/rails/app/models/discussion_threads/weekly_popular.rb": {
+        "lines": [
+          1,
           1,
           1,
           null,
@@ -143,6 +186,7 @@
           1,
           1,
           2,
+          null,
           null,
           null
         ]
@@ -357,34 +401,6 @@
           null,
           1,
           0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
           null
         ]
       },
@@ -584,6 +600,88 @@
         ],
         "branches": {}
       },
+      "/rails/app/controllers/api/v1/discussion_threads/onehour_popular.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "branches": {}
+      },
+      "/rails/app/controllers/api/v1/discussion_threads/popular_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/rails/app/controllers/api/v1/discussion_threads/recent_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/rails/app/controllers/api/v1/discussion_threads/recommended_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/rails/app/controllers/api/v1/discussion_threads/weekly_popular_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "branches": {}
+      },
       "/rails/app/controllers/api/v1/discussion_threads_controller.rb": {
         "lines": [
           0,
@@ -612,77 +710,6 @@
           0,
           0,
           null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/rails/app/controllers/api/v1/discussion_threads_newtopic_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/rails/app/controllers/api/v1/discussion_threads_onehour_popular.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/rails/app/controllers/api/v1/discussion_threads_populartopic_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/rails/app/controllers/api/v1/discussion_threads_recommendtopic_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/rails/app/controllers/api/v1/discussion_threads_week_populartopic_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
           0,
           0,
           0,
@@ -1099,12 +1126,149 @@
         ],
         "branches": {}
       },
-      "/rails/app/models/recommended_thread.rb": {
+      "/rails/app/models/discussion_threads_query/onehour_popular.rb": {
         "lines": [
           0,
           0,
+          0,
           null,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/rails/app/models/discussion_threads_query/popular.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/rails/app/models/discussion_threads_query/recent.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/rails/app/models/discussion_threads_query/recommended.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/rails/app/models/discussion_threads_query/weekly_popular.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           0,
           0,
           0,
@@ -1165,92 +1329,6 @@
         ],
         "branches": {}
       },
-      "/rails/app/queries/discussion_thread_query.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          null,
-          null
-        ],
-        "branches": {}
-      },
       "/rails/app/queries/posts_query.rb": {
         "lines": [
           0,
@@ -1265,28 +1343,6 @@
           0,
           0,
           null,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
-      },
-      "/rails/app/queries/recommended_discussion_thread_query.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
           0,
           0,
           0,
@@ -1359,6 +1415,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1746935861
+    "timestamp": 1746942927
   }
 }
