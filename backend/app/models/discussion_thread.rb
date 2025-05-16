@@ -16,6 +16,7 @@ class DiscussionThread < ApplicationRecord
 
   rescue ActiveRecord::RecordInvalid => e
     Rails.logger.error "Failed to create DiscussionThread with Post: #{e.message}"
+<<<<<<< HEAD
     return DiscussionThread.new 
   end
 
@@ -82,6 +83,9 @@ class DiscussionThread < ApplicationRecord
       Rails.cache.write("week_popular_threads", result, expires_in: 180.minutes)
       return result
     end
+=======
+    return DiscussionThread.new
+>>>>>>> a789abf11bf7c33ec6924bee34e6f435c12f0911
   end
 
   # ID からスレッドを取得（例外処理は Controller 側で行う）

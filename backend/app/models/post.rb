@@ -1,9 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :discussion_thread, foreign_key: "discussion_thread_id"
-  # 自分自身への参照
   belongs_to :reply_to, class_name: 'Post', optional: true
   has_many :replies, class_name: 'Post', foreign_key: 'reply_to_id'
-  
+  belongs_to :user
   has_many :votes, dependent: :destroy 
   has_many :reports, dependent: :destroy
   has_one :votes_status, foreign_key: :post_id
@@ -24,5 +23,13 @@ class Post < ApplicationRecord
 
   def self.reported
     PostsQuery.new.reported
+  end
+
+  def voter
+    case gender
+    when 1 then Voters::MaleVoter.new(self)
+    when 2 then Voters::FemaleVoter.new(self)
+    else Voters::NullVoter.new(self)
+    end
   end
 end

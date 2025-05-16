@@ -7,11 +7,19 @@ Rails.application.configure do
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.enable_reloading = true
+<<<<<<< HEAD
   config.cache_store = :redis_cache_store, {
     url: ENV['REDIS_URL'],
     namespace: 'cache'
   }
   config.action_controller.perform_caching = true
+=======
+
+  config.after_initialize do
+    ActiveRecord::Base.logger.level = Logger::INFO
+  end
+
+>>>>>>> a789abf11bf7c33ec6924bee34e6f435c12f0911
   # Do not eager load code on boot.
   config.eager_load = false
 

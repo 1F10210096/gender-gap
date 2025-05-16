@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   get "/health", to: ->(_) { [200, {}, ["OK"]] }
   namespace :api do
     namespace :v1 do
-      get 'discussion_threads/popular', to: 'discussion_threads_populartopic#index'
-      get 'discussion_threads/recent', to: 'discussion_threads_newtopic#index'
-      get 'discussion_threads/recommended', to: 'discussion_threads_recommendtopic#index'
-      get 'discussion_threads/week_popular', to: 'discussion_threads_week_populartopic#index'
-      resources :discussion_threads, only: [:index, :show, :create]
+      namespace :discussion_threads do
+        get 'popular', to: 'popular#index'
+        get 'recent', to: 'recent#index'
+        get 'recommended', to: 'recommended#index'
+        get 'week_popular', to: 'weekly_popular#index'
+      end
 
+      resources :discussion_threads, only: [:index, :show, :create]
       resources :posts, only: [:index, :show, :create], defaults: { format: :json } do
         resources :replies, only: [:create], controller: 'replies'
         resources :votes, only: [:create]

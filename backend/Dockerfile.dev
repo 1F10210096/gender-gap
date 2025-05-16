@@ -31,6 +31,9 @@ COPY --chown=rails:rails . .
 RUN mkdir -p tmp/pids && \
     chown -R rails:rails tmp log storage db
 
+RUN bundle config set --local without '' && \
+    bundle install --jobs=4 --retry=3
+
 # Copy entrypoint script
 COPY --chown=rails:rails docker-entrypoint.dev.sh /usr/bin/
 RUN chmod +x /usr/bin/docker-entrypoint.dev.sh
