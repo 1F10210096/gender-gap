@@ -9,7 +9,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile.dev
     container_name: rails_api
-    command: ["bin/rails", "server", "-b", "0.0.0.0"]
+    command: [ "bin/rails", "server", "-b", "0.0.0.0" ]
     ports:
       - "3000:3000"
     volumes:
@@ -67,7 +67,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 10s
       timeout: 5s
       retries: 5

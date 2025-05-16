@@ -1,9 +1,8 @@
 module Api
     module V1
-        class DiscussionThreadsPopulartopicController < DiscussionThreadsController
+        class DiscussionThreadsPopulartopicController < ApplicationController
             def index
-                popularThreads = DiscussionThread.fetch_popular
-                render_json_response(popularThreads)
+                render_json_response(DiscussionThreadPopular.call)
             end
         end
     end
