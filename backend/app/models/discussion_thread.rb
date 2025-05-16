@@ -16,35 +16,7 @@ class DiscussionThread < ApplicationRecord
 
   rescue ActiveRecord::RecordInvalid => e
     Rails.logger.error "Failed to create DiscussionThread with Post: #{e.message}"
-    return DiscussionThread.new 
-  end
-
-  # 最近のスレッドを取得
-  def self.fetch_recent
-    DiscussionThreadQuery.new.recent
-  end
-
-  # 人気のスレッドを取得（直近1時間のコメント数が多い順）
-  def self.fetch_onehour_popular
-    Rails.cache.fetch("onehour_popular_threads",expire_in: 1.hour) do
-      threads = DiscussionThreadQuery.new.onehourPopular # 直近1時間の人気スレッドを取得
-      Rails.logger.info("Fetched one hour popular threads: #{threads.inspect}")
-
-      threads.map do |thread|
-        {
-          id: thread.id,
-          thread_title: thread.thread_title,
-          created_at: thread.created_at,
-          updated_at: thread.updated_at,
-          image_key: thread.try(:image_key),
-          comments_count: thread.attributes["comments_count"].to_i,
-          votes_summary: {
-            male_votes: thread.attributes["male_votes"].to_i,
-            female_votes: thread.attributes["female_votes"].to_i
-        }
-        }
-      end
-    end
+    return DiscussionThread.new
   end
 
   # ID からスレッドを取得（例外処理は Controller 側で行う）

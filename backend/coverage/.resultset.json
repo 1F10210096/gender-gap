@@ -81,6 +81,39 @@
           null
         ]
       },
+      "/rails/app/models/discussion_thread_recent.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
       "/rails/app/models/discussion_thread_weekly_popular.rb": {
         "lines": [
           1,
@@ -590,7 +623,6 @@
       },
       "/rails/app/controllers/api/v1/discussion_threads_newtopic_controller.rb": {
         "lines": [
-          0,
           0,
           0,
           0,
@@ -1327,6 +1359,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1746934989
+    "timestamp": 1746935861
   }
 }
