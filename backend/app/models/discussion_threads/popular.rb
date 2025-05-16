@@ -7,7 +7,7 @@ module DiscussionThreads
       @summarizer = summarizer
     end
 
-    def self.call(query: DiscussionThreadQuery.new, summarizer: PostWithVoteSummary)
+    def self.call(query: ::DiscussionThreadsQuery::Popular.new, summarizer: PostWithVoteSummary)
         new(query: query, summarizer: summarizer).call
     end
 
