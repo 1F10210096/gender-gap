@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe DiscussionThreadOnehourPopular, type: :model do
+RSpec.describe DiscussionThreads::OnehourPopular, type: :model do
   let(:thread1) { create(:discussion_thread) }
   let(:thread2) { create(:discussion_thread) }
 
   let(:query) do
-    double('OnehourDiscussionThreadQuery', onehourPopular: [thread1, thread2])
+    double('DiscussionThreadQuery', onehourPopular: [thread1, thread2])
   end
 
   let(:summarizer) do

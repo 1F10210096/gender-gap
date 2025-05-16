@@ -1,15 +1,19 @@
 module DiscussionThreads
   class Recommended
-    
-    attr_reader :query, :summarizer
+    attr_reader :query, :summarizer, :gender
 
-    def initialize(query:,summarizer:)
+    def initialize(query:, summarizer:, gender:)
       @query = query
       @summarizer = summarizer
+      @gender = gender
     end
 
-    def self.call(query: ::DiscussionThreadsQuery::Recommended.new, summarizer: PostWithVoteSummary)
-        new(query: query, summarizer: summarizer).call
+    def self.call(
+      query: ::DiscussionThreadsQuery::Recommended.new,
+      summarizer: PostWithVoteSummary,
+      gender: Gender
+    )
+      new(query: query, summarizer: summarizer, gender: gender).call
     end
 
     def call
@@ -26,7 +30,7 @@ module DiscussionThreads
 
     def thread_recommend_with_votes
       query.recommend.map do |thread|
-        summarizer.call(thread: thread)
+        summarizer.call(thread: thread, gender: gender)
       end
     end
   end

@@ -1,8 +1,11 @@
 /* ポップなデザインのCSS（落ち着いたポップ・緑ベースの中立配色） */
+@import "tailwindcss";
 
 :root {
-  --primary-color: #7bed9f; /* 明るいグリーン */
-  --secondary-color: #dff9fb; /* 優しいパステルグリーン */
+  --primary-color: #7bed9f;
+  /* 明るいグリーン */
+  --secondary-color: #dff9fb;
+  /* 優しいパステルグリーン */
   --background-color: #e8f6e8;
   --text-color: #444;
   --border-radius: 12px;
@@ -17,9 +20,11 @@ body {
   margin: 0;
   padding: 0;
 }
+
 input {
   all: unset;
 }
+
 a {
   text-decoration: none;
   color: black;
