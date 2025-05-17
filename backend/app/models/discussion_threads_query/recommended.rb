@@ -8,6 +8,7 @@ module DiscussionThreadsQuery
 
     def recommend
       DiscussionThread
+        .preload(posts: :votes) 
         .left_joins(:posts)
         .joins("INNER JOIN recommended_threads ON recommended_threads.discussion_thread_id = discussion_threads.id")
         .group(:id, :recommended_at)

@@ -28,7 +28,7 @@ class PostWithVoteSummary
   end
 
   def all_votes
-    thread.posts.preload(:votes).flat_map(&:votes)
+    thread.posts.flat_map(&:votes)
   end
 
   def gender_decision(vote)
