@@ -107,6 +107,7 @@
 }
 
 .wrap {
+  border: 1px solid;
   resize: none;
   font-size: 13px;
   line-height: 15px;
