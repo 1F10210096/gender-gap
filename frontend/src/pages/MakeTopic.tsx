@@ -57,9 +57,9 @@ const MakeTopic = () => {
                     required
                   />
                   {error && <p className="text-red-500">{error}</p>}
-                  <div className="textarea">
+                  <div className={styles.textarea}>
                     <textarea
-                      placeholder="a"
+                      placeholder="投稿内容を書く"
                       className={styles.wrap}
                       value={threadContext}
                       onChange={(e) => setThreadContext(e.target.value)}
