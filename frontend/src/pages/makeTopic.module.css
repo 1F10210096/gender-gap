@@ -105,6 +105,9 @@
   border: 1px solid var(--border-strong-color);
   border-radius: var(--border-radius);
 }
+.textarea:focus {
+  outline: none;
+}
 
 .wrap {
   resize: none;
@@ -115,6 +118,9 @@
   height: 140px;
   padding: 12px 10px;
   border-radius: var(--border-radius);
+}
+.wrap:focus{
+  outline:none;
 }
 
 .createTopicBtn {

@@ -1,13 +1,14 @@
 .threadImg {
   width: 60px;
   height: 60px;
+  border-radius: var(--border-radius);
   border: 1px solid var(--shadow-color);
   background-color: var(--secondary-color);
   display: flex;
-  border-radius: var(--border-strong-color);
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  font-weight: bold;
+  color: var(--text-color);
 }
 
 .threadConfig {

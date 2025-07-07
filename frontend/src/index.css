@@ -22,7 +22,7 @@ body {
 }
 
 input {
-  all: unset;
+  /* all: unset; */
 }
 
 a {
