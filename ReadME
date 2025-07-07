@@ -40,3 +40,5 @@ docker compose logs
 
 バッジ処理の確認
 http://localhost:3000/sidekiq
+
+a
